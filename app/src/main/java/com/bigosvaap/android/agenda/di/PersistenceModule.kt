@@ -21,8 +21,8 @@ object PersistenceModule {
     @Singleton
     fun provideAppDatabase(application: Application, callback: AppDatabase.Callback) =
         Room.databaseBuilder(application, AppDatabase::class.java, AppDatabase.DATABASE_NAME)
-            .fallbackToDestructiveMigration()
             .addCallback(callback)
+            .fallbackToDestructiveMigration()
             .build()
 
 
