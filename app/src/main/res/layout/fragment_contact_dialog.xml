@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:divider="@drawable/separator"
+    android:adjustViewBounds="true"
+    android:showDividers="middle"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/nameContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Alejandro"
+        style="@style/TitleOptions"/>
+
+    <Button
+        android:id="@+id/detailsContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/watch"
+        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+    <Button
+        android:id="@+id/editContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/edit"
+        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+    <Button
+        android:id="@+id/deleteContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+
+</LinearLayout>

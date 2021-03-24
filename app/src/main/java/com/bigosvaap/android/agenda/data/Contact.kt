@@ -1,11 +1,13 @@
 package com.bigosvaap.android.agenda.data
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
-
-@Entity(tableName = "contacts", indices = [Index(value = ["name", "email", "phone"], unique = true)])
+@Parcelize
+@Entity(tableName = "contacts", indices = [Index(value = ["name"], unique = true)])
 data class Contact(
 
     val name: String,
@@ -13,4 +15,4 @@ data class Contact(
     val phone: String,
     @PrimaryKey(autoGenerate = true) val id: Long = 0
 
-)
+) : Parcelable

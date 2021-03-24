@@ -30,9 +30,11 @@ abstract class AppDatabase : RoomDatabase() {
 
             GlobalScope.launch(Dispatchers.IO){
                 Log.d("AppDatabase", "Callback")
-                dao.insert(Contact("Oswaldo", "oswaldo@gmail.com", "2351012288"))
+                dao.insert(Contact("Oswaldo", "bigosvaap@gmail.com", "2351012288"))
                 dao.insert(Contact("Carlos", "Carlos@gmail.com", "265465461"))
                 dao.insert(Contact("Juan", "Juan@gmail.com", "5464546546"))
+                dao.insert(Contact("Leyra", "Leyra@gmail.com", "5464546546"))
+                dao.insert(Contact("Brando", "Brando@gmail.com", "5464546546"))
             }
         }
 

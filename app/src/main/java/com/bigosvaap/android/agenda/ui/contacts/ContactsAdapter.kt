@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bigosvaap.android.agenda.data.Contact
 import com.bigosvaap.android.agenda.databinding.ContactItemBinding
 
-class ContactsAdapter : ListAdapter<Contact, ContactsAdapter.ContactViewHolder>(DiffCallback()){
-
+class ContactsAdapter(private val onItemClick: (Contact) -> Unit, private val onLongItemClick: (Contact) -> Unit) :
+    ListAdapter<Contact, ContactsAdapter.ContactViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val binding = ContactItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ContactViewHolder(binding)
+        return ContactViewHolder(binding, onItemClick, onLongItemClick)
     }
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
@@ -21,18 +21,26 @@ class ContactsAdapter : ListAdapter<Contact, ContactsAdapter.ContactViewHolder>(
         holder.bind(currentItem)
     }
 
+    class ContactViewHolder(
+        private val binding: ContactItemBinding,
+        private val onItemClick: (Contact) -> Unit,
+        private val onLongItemClick: (Contact) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-    class ContactViewHolder(private val binding: ContactItemBinding) : RecyclerView.ViewHolder(binding.root){
-
-        fun bind(contact: Contact){
+        fun bind(contact: Contact) {
             binding.apply {
+                root.setOnClickListener {
+                    onItemClick(contact)
+                }
+                root.setOnLongClickListener {
+                    onLongItemClick(contact)
+                    true
+                }
                 contactName.text = contact.name
             }
         }
 
     }
-
-
 
     class DiffCallback : DiffUtil.ItemCallback<Contact>() {
 
